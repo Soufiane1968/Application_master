@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOBEMAT — Gestion des véhicules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <div class="header-logo">
+        <img src="{{ url_for('static', filename='logo_sobemat.png') }}" 
+             height="70" alt="SOBEMAT">
+        <span>Gestion du Parc</span>
+    </div>
+    <a href="/ajouter" class="btn-ajouter">+ Ajouter un véhicule</a>
+</header>
+    <main>
+        <h2>Liste des véhicules ({{ vehicules|length }})</h2>
+
+        {% if vehicules %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Réf.</th>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Année</th>
+                    <th>Kilométrage</th>
+                    <th>Prix</th>
+                    <th>État</th>
+                    <th>QR Code</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for v in vehicules %}
+                <tr>
+                    <td>V{{ '%04d' % v[0] }}</td>
+                    <td>{{ v[1] }}</td>
+                    <td>{{ v[2] }}</td>
+                    <td>{{ v[3] }}</td>
+                    <td>{{ v[4] }} km</td>
+                    <td>{{ v[7] }} €</td>
+                    <td>
+                        <span class="badge-etat">{{ v[8] }}</span>
+                    </td>
+                    <td>
+                        <img src="{{ url_for('static', filename='qrcodes/QR_' + v[0]|string + '.png') }}" 
+                             width="80" height="80" alt="QR Code">
+                    </td>
+                    <td>
+                        <a href="/fiche/{{ v[0] }}" class="btn-voir">👁 Voir</a>
+                        <a href="/supprimer/{{ v[0] }}" class="btn-supprimer" 
+                           onclick="return confirm('Supprimer ce véhicule ?')">🗑 Supprimer</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="vide">
+            <p>Aucun véhicule enregistré pour le moment.</p>
+            <a href="/ajouter" class="btn-ajouter">+ Ajouter le premier véhicule</a>
+        </div>
+        {% endif %}
+    </main>
+
+</body>
+</html>
+

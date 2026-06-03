@@ -1,0 +1,370 @@
+/* ── Général ─────────────────────────────────────────────── */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+    color: #333;
+}
+
+/* ── Header ──────────────────────────────────────────────── */
+header {
+    background: #1F3864;
+    color: white;
+    padding: 16px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+/* ── Main ────────────────────────────────────────────────── */
+main {
+    padding: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+main h2 {
+    font-size: 18px;
+    color: #1F3864;
+    margin-bottom: 20px;
+}
+
+/* ── Boutons ─────────────────────────────────────────────── */
+.btn-ajouter {
+    background: #2E75B6;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.btn-ajouter:hover { background: #1F5C9A; }
+
+.btn-retour {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border: 1px solid white;
+    padding: 8px 16px;
+    border-radius: 8px;
+}
+
+.btn-voir {
+    background: #1F3864;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 4px;
+}
+
+.btn-supprimer {
+    background: #c0392b;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.btn-voir:hover { background: #2E5FA3; }
+.btn-supprimer:hover { background: #a93226; }
+
+/* ── Tableau ─────────────────────────────────────────────── */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+thead {
+    background: #1F3864;
+    color: white;
+}
+
+thead th {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+}
+
+tbody tr:hover { background: #f8f9ff; }
+
+tbody td {
+    padding: 12px 16px;
+    font-size: 14px;
+}
+
+/* ── Badge état ──────────────────────────────────────────── */
+.badge-etat {
+    background: #EAF3DE;
+    color: #3B6D11;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+/* ── Message vide ────────────────────────────────────────── */
+.vide {
+    text-align: center;
+    padding: 60px;
+    background: white;
+    border-radius: 12px;
+    color: #888;
+}
+
+.vide p { margin-bottom: 20px; font-size: 16px; }
+
+/* ── Formulaire ──────────────────────────────────────────── */
+.formulaire {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 700px;
+    margin: 0 auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.formulaire h2 {
+    margin-bottom: 24px;
+    color: #1F3864;
+}
+
+.form-groupe {
+    margin-bottom: 16px;
+    flex: 1;
+}
+
+.form-groupe label {
+    display: block;
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+.form-groupe input,
+.form-groupe select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+}
+
+.form-groupe input:focus,
+.form-groupe select:focus {
+    border-color: #2E75B6;
+}
+
+.form-ligne {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0;
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 14px;
+    background: #1F3864;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit:hover { background: #2E5FA3; }
+
+/* ── Fiche technique (vue client mobile) ─────────────────── */
+.fiche-page {
+    background: #f4f6f9;
+    min-height: 100vh;
+}
+
+.fiche-header {
+    background: #1F3864;
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    
+}
+.fiche-header {
+    background: #1F3864;
+    color: white;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+}
+
+.fiche-header img {
+    background: transparent;
+    border-radius: 8px;
+}
+.fiche-logo { font-size: 18px; font-weight: 500; }
+.fiche-ref  { font-size: 13px; color: #C5D8F0; }
+
+.fiche-main {
+    padding: 20px;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.fiche-titre {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.fiche-titre h1 {
+    font-size: 20px;
+    color: #1F3864;
+}
+
+.fiche-metriques {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.metrique {
+    background: white;
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metrique-label {
+    font-size: 11px;
+    color: #888;
+    text-transform: uppercase;
+}
+
+.metrique-valeur {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1F3864;
+}
+
+.fiche-details {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.detail-ligne {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 14px;
+}
+
+.detail-ligne:last-child { border-bottom: none; }
+.detail-label  { color: #888; }
+.detail-valeur { font-weight: 500; color: #333; }
+.detail-valeur.prix { color: #1F3864; font-size: 18px; }
+
+.fiche-contact { margin-top: 20px; }
+
+.btn-contact {
+    display: block;
+    text-align: center;
+    background: #1F3864;
+    color: white;
+    padding: 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.btn-contact:hover { background: #2E5FA3; }
+
+/* ── Équipements ─────────────────────────────────────────── */
+.equipements {
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.equipements-titre {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F3864;
+    margin-bottom: 12px;
+}
+
+.equipements-liste {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.equipements-liste li {
+    font-size: 13px;
+    color: #333;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.equipements-liste li:last-child {
+    border-bottom: none;
+}
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    font-size: 18px;
+    font-weight: 500;
+    flex: 1;
+}
