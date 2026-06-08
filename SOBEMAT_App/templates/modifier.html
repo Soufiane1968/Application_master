@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOBEMAT — Fiche véhicule</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body class="fiche-page">
+
+    <header class="fiche-header">
+        <div class="fiche-logo">
+            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="120" alt="SOBEMAT">
+            <div class="fiche-ref">Réf. V{{ '%04d' % vehicule[0] }}</div>
+    </header>
+
+    <main class="fiche-main">
+
+        <!-- Titre véhicule -->
+        <div class="fiche-titre">
+            <h1>{{ vehicule[1] }} {{ vehicule[2] }}</h1>
+            <span class="badge-etat">{{ vehicule[8] }}</span>
+        </div>
+
+        <!-- Métriques principales -->
+        <div class="fiche-metriques">
+            <div class="metrique">
+                <span class="metrique-label">Année</span>
+                <span class="metrique-valeur">{{ vehicule[3] }}</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">Kilométrage</span>
+                <span class="metrique-valeur">{{ vehicule[4] }} km</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">Moteur</span>
+                <span class="metrique-valeur">{{ vehicule[5] }}</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">Couleur</span>
+                <span class="metrique-valeur">{{ vehicule[6] }}</span>
+            </div>
+        </div>
+
+        <!-- Détails -->
+        <div class="fiche-details">
+            <div class="detail-ligne">
+                <span class="detail-label">💰 Prix</span>
+                <span class="detail-valeur prix">{{ vehicule[7] }} €</span>
+            </div>
+            <div class="detail-ligne">
+                <span class="detail-label">📋 État général</span>
+                <span class="detail-valeur">{{ vehicule[8] }}</span>
+            </div>
+            <div class="detail-ligne">
+                <span class="detail-label">🔧 Dernière révision</span>
+                <span class="detail-valeur">{{ vehicule[9] }}</span>
+            </div>
+            <div class="detail-ligne">
+                <span class="detail-label">🕹 Boite de vitesse</span>
+                <span class="detail-valeur">{{ vehicule[11] }}</span>
+            </div>
+            <div class="detail-ligne">
+                <span class="detail-label"> 🐴 Puissance</span>
+                <span class="detail-valeur">{{ vehicule[12] }} CV</span>
+            </div>
+            {% if vehicule[13] %}
+            <div class="equipements">
+                <div class="equipements-titre">👁 Options & Équipements</div>
+                <ul class="equipements-liste">
+                    {% for eq in vehicule[13].split(',') %}
+                    <li>✅ {{ eq.strip() }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+
+        <!-- Bouton contact -->
+        <div class="fiche-contact">
+            <a href="tel:+33660212239" class="btn-contact">
+                📞 Contacter SOBEMAT
+            </a>
+        </div>
+
+    </main>
+
+</body>
+
+</html>
