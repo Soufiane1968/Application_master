@@ -9,11 +9,12 @@
 </head>
 
 <body class="fiche-page">
-
-    <header class="fiche-header">
-        <div class="fiche-logo">
-            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="120" alt="SOBEMAT">
-            <div class="fiche-ref">Réf. V{{ '%04d' % vehicule[0] }}</div>
+    <header>
+        <div class="header-logo">
+            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="70" alt="SOBEMAT">
+            <span>Modifier un véhicule</span>
+        </div>
+        <a href="/" class="btn-retour">← Retour</a>
     </header>
 
     <main class="fiche-main">
@@ -82,6 +83,12 @@
         <div class="fiche-contact">
             <a href="tel:+33660212239" class="btn-contact">
                 📞 Contacter SOBEMAT
+            </a>
+        </div>
+
+        <div class="fiche-contact">
+            <a href="/QR_gen/{{ vehicule[0] }}" class="btn-contact">
+                📞 Générer Code QR
             </a>
         </div>
 

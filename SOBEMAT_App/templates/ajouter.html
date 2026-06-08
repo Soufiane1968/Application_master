@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOBEMAT — Ajouter un véhicule</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
 
+<body>
     <header>
-        <h1>🚗 SOBEMAT — Ajouter un véhicule</h1>
+        <div class="header-logo">
+            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="70" alt="SOBEMAT">
+            <span>Ajouter un véhicule</span>
+        </div>
         <a href="/" class="btn-retour">← Retour</a>
     </header>
+
 
     <main>
         <div class="formulaire">
@@ -20,18 +25,30 @@
 
                 <div class="form-groupe">
                     <label>Marque</label>
-                    <input type="text" name="marque" placeholder="Ex: Peugeot" required>
+                    <select name="marque">
+                        {% for m in marques %}
+                        <option value="{{ m[0] }}">{{ m[0] }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="form-groupe">
                     <label>Modèle</label>
-                    <input type="text" name="modele" placeholder="Ex: 3008" required>
+                    <select name="modele">
+                        {% for m in modeles %}
+                        <option value="{{ m[0] }}">{{ m[0] }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
 
                 <div class="form-ligne">
                     <div class="form-groupe">
                         <label>Année</label>
-                        <input type="number" name="annee" placeholder="Ex: 2019" required>
+                        <select name="annee">
+                            {% for a in range(2026, 2000, -1) %}
+                            <option value="{{ a }}">{{ a }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="form-groupe">
                         <label>Kilométrage</label>
@@ -42,11 +59,19 @@
                 <div class="form-ligne">
                     <div class="form-groupe">
                         <label>Moteur</label>
-                        <input type="text" name="moteur" placeholder="Ex: 1.5 HDI">
+                        <select name="moteur">
+                            {% for m in moteurs %}
+                            <option value="{{ m[0] }}">{{ m[0] }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="form-groupe">
                         <label>Couleur</label>
-                        <input type="text" name="couleur" placeholder="Ex: Gris">
+                        <select name="couleur">
+                            {% for c in couleurs %}
+                            <option value="{{ c[0] }}">{{ c[0] }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                 </div>
 
@@ -58,10 +83,9 @@
                     <div class="form-groupe">
                         <label>État</label>
                         <select name="etat">
-                            <option value="Excellent">Excellent</option>
-                            <option value="Très bon">Très bon</option>
-                            <option value="Bon">Bon</option>
-                            <option value="Correct">Correct</option>
+                            {% for e in etats %}
+                            <option value="{{ e[0] }}">{{ e[0] }}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -73,9 +97,10 @@
                 <div class="form-groupe">
                     <label>Boîte de vitesse</label>
                     <select name="boite">
-                        <option value="Manuelle">Manuelle</option>
-                        <option value="Automatique">Automatique</option>
-                    </select> 
+                        {% for b in boites %}
+                        <option value="{{ b[0] }}">{{ b[0] }}</option>
+                        {% endfor %}
+                    </select>
                 </div>
                 <div class="form-groupe">
                     <label>Puissance (CV)</label>
@@ -83,13 +108,13 @@
                 </div>
                 <div class="form-groupe">
                     <label>Options & Équipements</label>
-                    <textarea name="equipements" rows="5" 
+                    <textarea name="equipements" rows="5"
                         placeholder="Ex: Caméra de recul, Climatisation automatique, GPS, Régulateur de vitesse..."
                         style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-size:14px; resize:vertical;"></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    ✅ Enregistrer et générer QR Code
+                    ✅ Enregistrer
                 </button>
 
             </form>
@@ -97,4 +122,5 @@
     </main>
 
 </body>
+
 </html>

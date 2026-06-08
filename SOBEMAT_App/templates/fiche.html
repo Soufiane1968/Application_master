@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOBEMAT — Fiche véhicule</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body class="fiche-page">
 
-    <header class="fiche-header">
-    <div class="fiche-logo">
-        <img src="{{ url_for('static', filename='logo_sobemat.png') }}" 
-             height="120" alt="SOBEMAT">
-    <div class="fiche-ref">Réf. V{{ '%04d' % vehicule[0] }}</div>
+<body class="fiche-page">
+    <header>
+        <div class="header-logo">
+            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="70" alt="SOBEMAT">
+            <span>Fiche technique</span>
+        </div>
+        <a href="/" class="btn-retour">← Retour</a>
     </header>
 
     <main class="fiche-main">
@@ -87,4 +89,5 @@
     </main>
 
 </body>
+
 </html>

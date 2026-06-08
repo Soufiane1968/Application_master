@@ -18,6 +18,16 @@ def index():
 # ── Ajouter un véhicule ────────────────────────────────────────
 @app.route('/ajouter', methods=['GET', 'POST'])
 def ajouter():
+    if request.method == 'GET':
+        marques = database.get_marques()
+        etats = database.get_etats()
+        couleurs = database.get_couleurs()
+        boites = database.get_boites()
+        moteurs = database.get_moteurs()
+        modeles = database.get_modeles()
+        return render_template('ajouter.html',marques=marques,etats=etats,couleurs=couleurs,boites=boites,moteurs=moteurs,modeles=modeles)
+
+    
     if request.method == 'POST':
         marque   = request.form['marque']
         modele   = request.form['modele']
@@ -44,7 +54,6 @@ def ajouter():
 
         return redirect(url_for('index'))
 
-    return render_template('ajouter.html')
 
 # ── Fiche technique — vue client ───────────────────────────────
 @app.route('/fiche/<int:vehicule_id>')
@@ -76,6 +85,7 @@ def modifier(vehicule_id):
     couleurs = database.get_couleurs()
     boites = database.get_boites()
     moteurs = database.get_moteurs()
+    modeles = database.get_modeles()
 
     if request.method == 'POST':
         vehicule[1] = request.form['marque']
@@ -109,8 +119,18 @@ def modifier(vehicule_id):
                            etats=etats,
                            couleurs=couleurs,
                            boites=boites,
-                           moteurs=moteurs)
-                           
+                           moteurs=moteurs,
+                           modeles=modeles)
+
+
+@app.route('/QR_gen/<int:vehicule_id>', methods=['GET', 'POST'])
+def QR_gen(vehicule_id):
+    vehicule = database.get_vehicule(vehicule_id)
+    if vehicule is None:
+        return "Véhicule non trouvé", 404
+    generer_qrcode(vehicule[0])
+    return redirect(url_for('index'))
+
 # ── Générer QR Code ────────────────────────────────────────────
 def generer_qrcode(vehicule_id):
     # L'URL que le client verra en scannant
