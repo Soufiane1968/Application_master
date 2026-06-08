@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOBEMAT — Gestion des véhicules</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
+
 <body>
 
-<header>
-    <div class="header-logo">
-        <img src="{{ url_for('static', filename='logo_sobemat.png') }}" 
-             height="70" alt="SOBEMAT">
-        <span>Gestion du Parc</span>
-    </div>
-    <a href="/ajouter" class="btn-ajouter">+ Ajouter un véhicule</a>
-</header>
+    <header>
+        <div class="header-logo">
+            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="70" alt="SOBEMAT">
+            <span>Gestion du Parc</span>
+        </div>
+        <a href="/ajouter" class="btn-ajouter">+ Ajouter un véhicule</a>
+    </header>
     <main>
         <h2>Liste des véhicules ({{ vehicules|length }})</h2>
 
@@ -47,13 +48,14 @@
                         <span class="badge-etat">{{ v[8] }}</span>
                     </td>
                     <td>
-                        <img src="{{ url_for('static', filename='qrcodes/QR_' + v[0]|string + '.png') }}" 
-                             width="80" height="80" alt="QR Code">
+                        <img src="{{ url_for('static', filename='qrcodes/QR_' + v[0]|string + '.png') }}" width="80"
+                            height="80" alt="QR Code">
                     </td>
                     <td>
                         <a href="/fiche/{{ v[0] }}" class="btn-voir">👁 Voir</a>
-                        <a href="/supprimer/{{ v[0] }}" class="btn-supprimer" 
-                           onclick="return confirm('Supprimer ce véhicule ?')">🗑 Supprimer</a>
+                        <a href="/modifier/{{ v[0] }}" class="btn-modifier"> ✏ Modifier</a>
+                        <a href="/supprimer/{{ v[0] }}" class="btn-supprimer"
+                            onclick="return confirm('Supprimer ce véhicule ?')">🗑 Supprimer</a>
                     </td>
                 </tr>
                 {% endfor %}
@@ -68,5 +70,5 @@
     </main>
 
 </body>
-</html>
 
+</html>

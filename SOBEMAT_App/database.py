@@ -65,5 +65,40 @@ def supprimer_vehicule(vehicule_id):
     conn.commit()
     conn.close()
 
+
+def get_boites():
+    conn = connexion()
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT boite from vehicules')
+    conn.commit()
+    conn.close()
+
+def get_couleurs():
+    conn = connexion()
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT couleur from vehicules')
+    conn.commit()
+    conn.close()    
+
+def get_marques():
+    conn = connexion()
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT marque from vehicules')
+    conn.commit()
+    conn.close() 
+
+def get_moteurs():
+    conn = connexion()
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT moteur from vehicules')
+    conn.commit()
+    conn.close() 
+
+def get_etats():
+    conn = connexion()
+    cursor = conn.cursor()
+    cursor.execute('SELECT DISTINCT etat from vehicules')
+    conn.commit()
+    conn.close()  
 if __name__ == '__main__':
     creer_table()

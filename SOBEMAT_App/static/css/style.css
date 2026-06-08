@@ -19,7 +19,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    
+
 }
 
 header h1 {
@@ -50,7 +50,9 @@ main h2 {
     font-size: 14px;
 }
 
-.btn-ajouter:hover { background: #1F5C9A; }
+.btn-ajouter:hover {
+    background: #1F5C9A;
+}
 
 .btn-retour {
     color: white;
@@ -71,6 +73,16 @@ main h2 {
     margin-right: 4px;
 }
 
+.btn-modifier {
+    background: #827200;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    margin-right: 4px;
+}
+
 .btn-supprimer {
     background: #c0392b;
     color: white;
@@ -80,8 +92,13 @@ main h2 {
     font-size: 13px;
 }
 
-.btn-voir:hover { background: #2E5FA3; }
-.btn-supprimer:hover { background: #a93226; }
+.btn-voir:hover {
+    background: #2E5FA3;
+}
+
+.btn-supprimer:hover {
+    background: #a93226;
+}
 
 /* ── Tableau ─────────────────────────────────────────────── */
 table {
@@ -90,7 +107,7 @@ table {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 thead {
@@ -109,7 +126,9 @@ tbody tr {
     border-bottom: 1px solid #f0f0f0;
 }
 
-tbody tr:hover { background: #f8f9ff; }
+tbody tr:hover {
+    background: #f8f9ff;
+}
 
 tbody td {
     padding: 12px 16px;
@@ -135,7 +154,10 @@ tbody td {
     color: #888;
 }
 
-.vide p { margin-bottom: 20px; font-size: 16px; }
+.vide p {
+    margin-bottom: 20px;
+    font-size: 16px;
+}
 
 /* ── Formulaire ──────────────────────────────────────────── */
 .formulaire {
@@ -144,7 +166,7 @@ tbody td {
     padding: 30px;
     max-width: 700px;
     margin: 0 auto;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .formulaire h2 {
@@ -198,7 +220,9 @@ tbody td {
     margin-top: 10px;
 }
 
-.btn-submit:hover { background: #2E5FA3; }
+.btn-submit:hover {
+    background: #2E5FA3;
+}
 
 /* ── Fiche technique (vue client mobile) ─────────────────── */
 .fiche-page {
@@ -215,8 +239,9 @@ tbody td {
     justify-content: center;
     align-items: center;
     gap: 12px;
-    
+
 }
+
 .fiche-header {
     background: #1F3864;
     color: white;
@@ -232,8 +257,16 @@ tbody td {
     background: transparent;
     border-radius: 8px;
 }
-.fiche-logo { font-size: 18px; font-weight: 500; }
-.fiche-ref  { font-size: 13px; color: #C5D8F0; }
+
+.fiche-logo {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.fiche-ref {
+    font-size: 13px;
+    color: #C5D8F0;
+}
 
 .fiche-main {
     padding: 20px;
@@ -249,7 +282,7 @@ tbody td {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .fiche-titre h1 {
@@ -268,7 +301,7 @@ tbody td {
     background: white;
     border-radius: 10px;
     padding: 14px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
     gap: 4px;
@@ -291,7 +324,7 @@ tbody td {
     border-radius: 12px;
     padding: 16px 20px;
     margin-bottom: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .detail-ligne {
@@ -303,12 +336,27 @@ tbody td {
     font-size: 14px;
 }
 
-.detail-ligne:last-child { border-bottom: none; }
-.detail-label  { color: #888; }
-.detail-valeur { font-weight: 500; color: #333; }
-.detail-valeur.prix { color: #1F3864; font-size: 18px; }
+.detail-ligne:last-child {
+    border-bottom: none;
+}
 
-.fiche-contact { margin-top: 20px; }
+.detail-label {
+    color: #888;
+}
+
+.detail-valeur {
+    font-weight: 500;
+    color: #333;
+}
+
+.detail-valeur.prix {
+    color: #1F3864;
+    font-size: 18px;
+}
+
+.fiche-contact {
+    margin-top: 20px;
+}
 
 .btn-contact {
     display: block;
@@ -322,7 +370,9 @@ tbody td {
     font-weight: 500;
 }
 
-.btn-contact:hover { background: #2E5FA3; }
+.btn-contact:hover {
+    background: #2E5FA3;
+}
 
 /* ── Équipements ─────────────────────────────────────────── */
 .equipements {
@@ -330,7 +380,7 @@ tbody td {
     border-radius: 12px;
     padding: 16px 20px;
     margin-top: 16px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .equipements-titre {
@@ -359,6 +409,7 @@ tbody td {
 .equipements-liste li:last-child {
     border-bottom: none;
 }
+
 .header-logo {
     display: flex;
     align-items: center;
