@@ -22,62 +22,95 @@
         <!-- Titre véhicule -->
         <div class="fiche-titre">
             <h1>{{ vehicule[1] }} {{ vehicule[2] }}</h1>
-            <span class="badge-etat">{{ vehicule[8] }}</span>
+            {% set logos_locaux = {
+            'DS Automobiles': '/static/logos/ds.png'
+            } %}
+            {% if vehicule[1] in logos_locaux %}
+            <img src="{{ logos_locaux[vehicule[1]] }}" height="50" alt="{{ vehicule[1] }}">
+            {% else %}
+            <img src="https://www.carlogos.org/car-logos/{{ vehicule[1] | lower | replace(' ', '-') }}-logo.png"
+                height="50" alt="{{ vehicule[1] }}" onerror="this.style.display='none';">
+            {% endif %}
         </div>
-
-        <!-- Métriques principales -->
+        <!-- Métriques -->
         <div class="fiche-metriques">
             <div class="metrique">
-                <span class="metrique-label">Année</span>
+                <span class="metrique-label">
+                    <i class="fa-regular fa-calendar"></i> Année
+                </span>
                 <span class="metrique-valeur">{{ vehicule[3] }}</span>
             </div>
             <div class="metrique">
-                <span class="metrique-label">Kilométrage</span>
+                <span class="metrique-label">
+                    <i class="fa-solid fa-gauge-high"></i> Kilométrage
+                </span>
                 <span class="metrique-valeur">{{ vehicule[4] }} km</span>
             </div>
             <div class="metrique">
-                <span class="metrique-label">Moteur</span>
+                <span class="metrique-label">
+                    <i class="fa-solid fa-gas-pump"></i> Moteur
+                </span>
                 <span class="metrique-valeur">{{ vehicule[5] }}</span>
             </div>
             <div class="metrique">
-                <span class="metrique-label">Couleur</span>
+                <span class="metrique-label">
+                    <i class="fa-solid fa-palette"></i> Couleur
+                </span>
                 <span class="metrique-valeur">{{ vehicule[6] }}</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">
+                    <i class="fa-solid fa-bolt"></i> Puissance
+                </span>
+                <span class="metrique-valeur">{{ vehicule[11] }} CV</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">
+                    <i class="fa-solid fa-door-open"></i> Nb. Portes
+                </span>
+                <span class="metrique-valeur">{{ vehicule[13] }}</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">
+                    <i class="fa-solid fa-people-group"></i> Nb. Places
+                </span>
+                <span class="metrique-valeur">{{ vehicule[14] }}</span>
+            </div>
+            <div class="metrique">
+                <span class="metrique-label">
+                    <i class="fa-solid fa-tag"></i> Prix
+                </span>
+                <span class="metrique-valeur">{{ vehicule[7] }} €</span>
             </div>
         </div>
 
-        <!-- Détails -->
-        <div class="fiche-details">
-            <div class="detail-ligne">
-                <span class="detail-label">💰 Prix</span>
-                <span class="detail-valeur prix">{{ vehicule[7] }} €</span>
+        <!-- État et Boîte dans les métriques -->
+        <div class="fiche-metriques">
+            <div class="metrique">
+                <span class="metrique-label">
+                    <i class="fa-solid fa-star"></i> État général
+                </span>
+                <span class="metrique-valeur">{{ vehicule[8] }}</span>
             </div>
-            <div class="detail-ligne">
-                <span class="detail-label">📋 État général</span>
-                <span class="detail-valeur">{{ vehicule[8] }}</span>
+            <div class="metrique">
+                <span class="metrique-label">
+                    <i class="fa-solid fa-gears"></i> Boîte de vitesse
+                </span>
+                <span class="metrique-valeur">{{ vehicule[10] }}</span>
             </div>
-            <div class="detail-ligne">
-                <span class="detail-label">🔧 Dernière révision</span>
-                <span class="detail-valeur">{{ vehicule[9] }}</span>
-            </div>
-            <div class="detail-ligne">
-                <span class="detail-label">🕹 Boite de vitesse</span>
-                <span class="detail-valeur">{{ vehicule[11] }}</span>
-            </div>
-            <div class="detail-ligne">
-                <span class="detail-label"> 🐴 Puissance</span>
-                <span class="detail-valeur">{{ vehicule[12] }} CV</span>
-            </div>
-            {% if vehicule[13] %}
-            <div class="equipements">
-                <div class="equipements-titre">👁 Options & Équipements</div>
-                <ul class="equipements-liste">
-                    {% for eq in vehicule[13].split(',') %}
-                    <li>✅ {{ eq.strip() }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-            {% endif %}
         </div>
+
+        <!-- Équipements -->
+        {% if vehicule[12] %}
+        <div class="equipements">
+            <div class="equipements-titre">👁 Options & Équipements</div>
+            <ul class="equipements-liste">
+                {% for eq in vehicule[12].split(',') %}
+                <li>• {{ eq.strip() }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
 
         <!-- Bouton contact -->
         <div class="fiche-contact">

@@ -6,48 +6,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SOBEMAT — Ajouter un véhicule</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </head>
 
 <body>
+
     <header>
-        <div class="header-logo">
-            <img src="{{ url_for('static', filename='logo_sobemat.png') }}" height="70" alt="SOBEMAT">
-            <span>Ajouter un véhicule</span>
-        </div>
+        <h1>🚗 SOBEMAT — Ajouter un véhicule</h1>
         <a href="/" class="btn-retour">← Retour</a>
     </header>
-
 
     <main>
         <div class="formulaire">
             <h2>Informations du véhicule</h2>
             <form method="POST" action="/ajouter">
 
+                <!-- Marque -->
                 <div class="form-groupe">
                     <label>Marque</label>
-                    <select name="marque">
-                        {% for m in marques %}
-                        <option value="{{ m[0] }}">{{ m[0] }}</option>
-                        {% endfor %}
+                    <select name="marque" id="marque" required>
+                        <option value="">-- Sélectionner une marque --</option>
+
+                        <!-- Françaises -->
+                        <optgroup label="🇫🇷 Françaises">
+                            <option value="Renault">Renault</option>
+                            <option value="Peugeot">Peugeot</option>
+                            <option value="Citroën">Citroën</option>
+                            <option value="DS Automobiles">DS Automobiles</option>
+                            <option value="Bugatti">Bugatti</option>
+                            <option value="Alpine">Alpine</option>
+                        </optgroup>
+
+                        <!-- Allemandes -->
+                        <optgroup label="🇩🇪 Allemandes">
+                            <option value="BMW">BMW</option>
+                            <option value="Mercedes">Mercedes-Benz</option>
+                            <option value="Audi">Audi</option>
+                            <option value="Volkswagen">Volkswagen</option>
+                            <option value="Porsche">Porsche</option>
+                            <option value="Opel">Opel</option>
+                            <option value="Maybach">Maybach</option>
+                        </optgroup>
+
+                        <!-- Japonaises -->
+                        <optgroup label="🇯🇵 Japonaises">
+                            <option value="Toyota">Toyota</option>
+                            <option value="Honda">Honda</option>
+                            <option value="Nissan">Nissan</option>
+                            <option value="Mazda">Mazda</option>
+                            <option value="Subaru">Subaru</option>
+                            <option value="Mitsubishi">Mitsubishi</option>
+                            <option value="Suzuki">Suzuki</option>
+                            <option value="Lexus">Lexus</option>
+                            <option value="Infiniti">Infiniti</option>
+                            <option value="Acura">Acura</option>
+                        </optgroup>
+
+                        <!-- Coréennes -->
+                        <optgroup label="🇰🇷 Coréennes">
+                            <option value="Hyundai">Hyundai</option>
+                            <option value="Genesis">Genesis</option>
+                        </optgroup>
+
+                        <!-- Américaines -->
+                        <optgroup label="🇺🇸 Américaines">
+                            <option value="Ford">Ford</option>
+                            <option value="Chevrolet">Chevrolet</option>
+                            <option value="Tesla">Tesla</option>
+                            <option value="Cadillac">Cadillac</option>
+                            <option value="Jeep">Jeep</option>
+                            <option value="Dodge">Dodge</option>
+                            <option value="RAM">RAM</option>
+                            <option value="GMC">GMC</option>
+                            <option value="Lincoln">Lincoln</option>
+                        </optgroup>
+
+                        <!-- Italiennes -->
+                        <optgroup label="🇮🇹 Italiennes">
+                            <option value="Ferrari">Ferrari</option>
+                            <option value="Lamborghini">Lamborghini</option>
+                            <option value="Maserati">Maserati</option>
+                            <option value="Fiat">Fiat</option>
+                            <option value="Alfa Romeo">Alfa Romeo</option>
+                            <option value="Lancia">Lancia</option>
+                            <option value="Pagani">Pagani</option>
+                        </optgroup>
+
+                        <!-- Britanniques -->
+                        <optgroup label="🇬🇧 Britanniques">
+                            <option value="Rolls-Royce">Rolls-Royce</option>
+                            <option value="Bentley">Bentley</option>
+                            <option value="Jaguar">Jaguar</option>
+                            <option value="Land Rover">Land Rover</option>
+                            <option value="Aston Martin">Aston Martin</option>
+                            <option value="McLaren">McLaren</option>
+                            <option value="Mini">Mini</option>
+                        </optgroup>
+
+                        <!-- Chinoises -->
+                        <optgroup label="🇨🇳 Chinoises">
+                            <option value="BYD">BYD</option>
+                            <option value="Geely">Geely</option>
+                            <option value="Chery">Chery</option>
+                            <option value="NIO">NIO</option>
+                            <option value="XPeng">XPeng</option>
+                            <option value="Great Wall Motors">Great Wall Motors</option>
+                            <option value="MG Motor">MG Motor</option>
+                        </optgroup>
+
+                        <!-- Suédoises -->
+                        <optgroup label="🇸🇪 Suédoises">
+                            <option value="Volvo">Volvo</option>
+                            <option value="Koenigsegg">Koenigsegg</option>
+                            <option value="Polestar">Polestar</option>
+                        </optgroup>
+
+
+
+                        <!-- Électriques -->
+                        <optgroup label="⚡ Véhicules électriques">
+                            <option value="Rivian">Rivian</option>
+                            <option value="Lucid Motors">Lucid Motors</option>
+                            <option value="VinFast">VinFast</option>
+                        </optgroup>
+
                     </select>
                 </div>
 
+                <!-- Modèle -->
                 <div class="form-groupe">
                     <label>Modèle</label>
-                    <select name="modele">
-                        {% for m in modeles %}
-                        <option value="{{ m[0] }}">{{ m[0] }}</option>
-                        {% endfor %}
-                    </select>
+                    <input type="text" name="modele" placeholder="Ex: 3008" required>
                 </div>
 
+                <!-- Année & Kilométrage -->
                 <div class="form-ligne">
                     <div class="form-groupe">
                         <label>Année</label>
-                        <select name="annee">
-                            {% for a in range(2026, 2000, -1) %}
-                            <option value="{{ a }}">{{ a }}</option>
-                            {% endfor %}
+                        <select name="annee" required>
+                            <option value="">-- Sélectionner --</option>
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
                         </select>
                     </div>
                     <div class="form-groupe">
@@ -56,25 +166,77 @@
                     </div>
                 </div>
 
+                <!-- Moteur & Couleur -->
                 <div class="form-ligne">
                     <div class="form-groupe">
                         <label>Moteur</label>
-                        <select name="moteur">
-                            {% for m in moteurs %}
-                            <option value="{{ m[0] }}">{{ m[0] }}</option>
-                            {% endfor %}
-                        </select>
+                        <input type="text" name="moteur" placeholder="Ex: 1.5 HDI">
                     </div>
                     <div class="form-groupe">
                         <label>Couleur</label>
-                        <select name="couleur">
-                            {% for c in couleurs %}
-                            <option value="{{ c[0] }}">{{ c[0] }}</option>
-                            {% endfor %}
+                        <select name="couleur" required>
+                            <option value="">-- Sélectionner une couleur --</option>
+
+                            <!-- Couleurs classiques -->
+                            <optgroup label="Couleurs classiques">
+                                <option value="Noir">⚫ Noir</option>
+                                <option value="Blanc">⚪ Blanc</option>
+                                <option value="Gris">⚫ Gris</option>
+                                <option value="Argent">⚪ Argent</option>
+                                <option value="Bleu marine">🔵 Bleu marine</option>
+                                <option value="Rouge">🔴 Rouge</option>
+                                <option value="Vert foncé">🟢 Vert foncé</option>
+                                <option value="Marron">🟤 Marron</option>
+                            </optgroup>
+
+                            <!-- Couleurs sportives -->
+                            <optgroup label="Couleurs sportives">
+                                <option value="Bleu électrique">🔵 Bleu électrique</option>
+                                <option value="Orange compétition">🟠 Orange compétition</option>
+                                <option value="Vert lime">🟢 Vert lime</option>
+                                <option value="Noir mat">⚫ Noir mat</option>
+                                <option value="Gris Nardo">⚫ Gris Nardo</option>
+                                <option value="Blanc perlé">⚪ Blanc perlé</option>
+                            </optgroup>
+
+                            <!-- Couleurs premium -->
+                            <optgroup label="Couleurs premium / luxe">
+                                <option value="Champagne">🟡 Champagne</option>
+                                <option value="Bronze">🟤 Bronze</option>
+                                <option value="Bleu nuit">🔵 Bleu nuit</option>
+                                <option value="Vert émeraude">🟢 Vert émeraude</option>
+                                <option value="Bordeaux">🔴 Bordeaux</option>
+                                <option value="Ivoire">⚪ Ivoire</option>
+                                <option value="Gris titanium">⚫ Gris titanium</option>
+                                <option value="Noir obsidienne">⚫ Noir obsidienne</option>
+                            </optgroup>
+
+                            <!-- Couleurs modernes -->
+                            <optgroup label="Couleurs modernes">
+                                <option value="Vert sauge">🟢 Vert sauge</option>
+                                <option value="Bleu glacier">🔵 Bleu glacier</option>
+                                <option value="Gris béton">⚫ Gris béton</option>
+                                <option value="Cuivre métallisé">🟤 Cuivre métallisé</option>
+                                <option value="Violet profond">🟣 Violet profond</option>
+                                <option value="Turquoise">🔵 Turquoise</option>
+                                <option value="Rose gold">🔴 Rose gold</option>
+                                <option value="Marron caramel">🟤 Marron caramel</option>
+                            </optgroup>
+
+                            <!-- Finitions -->
+                            <optgroup label="Finitions">
+                                <option value="Métallisée">⚪ Métallisée</option>
+                                <option value="Mate">⚫ Mate</option>
+                                <option value="Brillante">⚪ Brillante</option>
+                                <option value="Satinée">⚪ Satinée</option>
+                                <option value="Nacrée">⚪ Nacrée</option>
+                            </optgroup>
+
                         </select>
                     </div>
                 </div>
 
+                <!-- Prix & État -->
                 <div class="form-ligne">
                     <div class="form-groupe">
                         <label>Prix (€)</label>
@@ -83,43 +245,158 @@
                     <div class="form-groupe">
                         <label>État</label>
                         <select name="etat">
-                            {% for e in etats %}
-                            <option value="{{ e[0] }}">{{ e[0] }}</option>
-                            {% endfor %}
+                            <option value="Excellent">Excellent</option>
+                            <option value="Très bon">Très bon</option>
+                            <option value="Bon">Bon</option>
+                            <option value="Correct">Correct</option>
                         </select>
                     </div>
                 </div>
 
-                <div class="form-groupe">
-                    <label>Dernière révision</label>
-                    <input type="text" name="revision" placeholder="Ex: Janvier 2024">
-                </div>
+                <!-- Boîte de vitesse -->
                 <div class="form-groupe">
                     <label>Boîte de vitesse</label>
                     <select name="boite">
-                        {% for b in boites %}
-                        <option value="{{ b[0] }}">{{ b[0] }}</option>
-                        {% endfor %}
+                        <option value="Manuelle">Manuelle</option>
+                        <option value="Automatique">Automatique</option>
                     </select>
                 </div>
+
+                <!-- Puissance -->
                 <div class="form-groupe">
                     <label>Puissance (CV)</label>
                     <input type="number" name="puissance" placeholder="Ex: 130">
                 </div>
+
+                <!-- Nb Portes & Nb Places -->
+                <div class="form-ligne">
+                    <div class="form-groupe">
+                        <label>🚪 Nombre de portes</label>
+                        <select name="nb_portes">
+                            <option value="2">2 portes</option>
+                            <option value="3">3 portes</option>
+                            <option value="4">4 portes</option>
+                            <option value="5">5 portes</option>
+                            <option value="6">6 portes</option>
+                        </select>
+                    </div>
+                    <div class="form-groupe">
+                        <label>💺 Nombre de places</label>
+                        <select name="nb_places">
+                            <option value="2">2 places</option>
+                            <option value="3">3 places</option>
+                            <option value="4">4 places</option>
+                            <option value="5">5 places</option>
+                            <option value="6">6 places</option>
+                            <option value="7">7 places</option>
+                            <option value="8">8 places</option>
+                            <option value="9">9 places</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Équipements -->
                 <div class="form-groupe">
                     <label>Options & Équipements</label>
                     <textarea name="equipements" rows="5"
-                        placeholder="Ex: Caméra de recul, Climatisation automatique, GPS, Régulateur de vitesse..."
+                        placeholder="Ex: Caméra de recul, Climatisation automatique, GPS..."
                         style="width:100%; padding:10px; border:1px solid #ddd; border-radius:8px; font-size:14px; resize:vertical;"></textarea>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    ✅ Enregistrer
+                    ✅ Enregistrer et générer QR Code
                 </button>
 
             </form>
         </div>
     </main>
+
+    <!-- Script logos marques -->
+    <script>
+        function formatMarque(marque) {
+            if (!marque.id) return marque.text;
+            var logos = {
+                'Audi': 'https://www.carlogos.org/car-logos/audi-logo-2016.png',
+                'BMW': 'https://www.carlogos.org/car-logos/bmw-logo-2020.png',
+                'Citroën': 'https://www.carlogos.org/car-logos/citroen-logo.png',
+                'Dacia': 'https://www.carlogos.org/car-logos/dacia-logo.png',
+                'Fiat': 'https://www.carlogos.org/car-logos/fiat-logo.png',
+                'Ford': 'https://www.carlogos.org/car-logos/ford-logo.png',
+                'Honda': 'https://www.carlogos.org/car-logos/honda-logo.png',
+                'Hyundai': 'https://www.carlogos.org/car-logos/hyundai-logo.png',
+                'Mercedes': 'https://www.carlogos.org/car-logos/mercedes-benz-logo.png',
+                'Nissan': 'https://www.carlogos.org/car-logos/nissan-logo.png',
+                'Opel': 'https://www.carlogos.org/car-logos/opel-logo.png',
+                'Peugeot': 'https://www.carlogos.org/car-logos/peugeot-logo.png',
+                'Renault': 'https://www.carlogos.org/car-logos/renault-logo.png',
+                'Seat': 'https://www.carlogos.org/car-logos/seat-logo.png',
+                'Skoda': 'https://www.carlogos.org/car-logos/skoda-logo.png',
+                'Toyota': 'https://www.carlogos.org/car-logos/toyota-logo.png',
+                'Volkswagen': 'https://www.carlogos.org/car-logos/volkswagen-logo.png',
+                'Volvo': 'https://www.carlogos.org/car-logos/volvo-logo.png',
+                'DS Automobiles': '/static/logos/ds.png',
+                'Bugatti': 'https://www.carlogos.org/car-logos/bugatti-logo.png',
+                'Alpine': 'https://www.carlogos.org/car-logos/alpine-logo.png',
+                'Porsche': 'https://www.carlogos.org/car-logos/porsche-logo.png',
+                'Maybach': 'https://www.carlogos.org/car-logos/maybach-logo.png',
+                'Mazda': 'https://www.carlogos.org/car-logos/mazda-logo.png',
+                'Subaru': 'https://www.carlogos.org/car-logos/subaru-logo.png',
+                'Mitsubishi': 'https://www.carlogos.org/car-logos/mitsubishi-logo.png',
+                'Suzuki': 'https://www.carlogos.org/car-logos/suzuki-logo.png',
+                'Lexus': 'https://www.carlogos.org/car-logos/lexus-logo.png',
+                'Chevrolet': 'https://www.carlogos.org/car-logos/chevrolet-logo.png',
+                'Tesla': 'https://www.carlogos.org/car-logos/tesla-logo.png',
+                'Cadillac': 'https://www.carlogos.org/car-logos/cadillac-logo.png',
+                'Jeep': 'https://www.carlogos.org/car-logos/jeep-logo.png',
+                'Dodge': 'https://www.carlogos.org/car-logos/dodge-logo.png',
+                'RAM': 'https://www.carlogos.org/car-logos/ram-logo.png',
+                'GMC': 'https://www.carlogos.org/car-logos/gmc-logo.png',
+                'Koenigsegg': 'https://www.carlogos.org/car-logos/koenigsegg-logo.png',
+                'Polestar': 'https://www.carlogos.org/car-logos/polestar-logo.png',
+                'Rolls-Royce': 'https://www.carlogos.org/car-logos/rolls-royce-logo.png',
+                'Bentley': 'https://www.carlogos.org/car-logos/bentley-logo.png',
+                'Jaguar': 'https://www.carlogos.org/car-logos/jaguar-logo.png',
+                'Land Rover': 'https://www.carlogos.org/car-logos/land-rover-logo.png',
+                'Aston Martin': 'https://www.carlogos.org/car-logos/aston-martin-logo.png',
+                'McLaren': 'https://www.carlogos.org/car-logos/mclaren-logo.png',
+                'Mini': 'https://www.carlogos.org/car-logos/mini-logo.png',
+                'BYD': 'https://www.carlogos.org/car-logos/byd-logo.png',
+                'Geely': 'https://www.carlogos.org/car-logos/geely-logo.png',
+                'Chery': 'https://www.carlogos.org/car-logos/chery-logo.png',
+                'NIO': 'https://www.carlogos.org/car-logos/nio-logo.png',
+                'XPeng': 'https://www.carlogos.org/car-logos/xpeng-logo.png',
+                'Great Wall Motors': 'https://www.carlogos.org/car-logos/great-wall-motors-logo.png',
+                'MG Motor': 'https://www.carlogos.org/car-logos/mg-logo.png',
+                'Genesis': 'https://www.carlogos.org/car-logos/genesis-logo.png',
+                'Infiniti': 'https://www.carlogos.org/car-logos/infiniti-logo.png',
+                'Acura': 'https://www.carlogos.org/car-logos/acura-logo.png',
+                'Lincoln': 'https://www.carlogos.org/car-logos/lincoln-logo.png',
+                'Ferrari': 'https://www.carlogos.org/car-logos/ferrari-logo.png',
+                'Lamborghini': 'https://www.carlogos.org/car-logos/lamborghini-logo.png',
+                'Maserati': 'https://www.carlogos.org/car-logos/maserati-logo.png',
+                'Alfa Romeo': 'https://www.carlogos.org/car-logos/alfa-romeo-logo.png',
+                'Lancia': 'https://www.carlogos.org/car-logos/lancia-logo.png',
+                'Pagani': 'https://www.carlogos.org/car-logos/pagani-logo.png',
+                'KTM': 'https://www.carlogos.org/car-logos/ktm-logo.png',
+                'Rivian': 'https://www.carlogos.org/car-logos/rivian-logo.png',
+                'Lucid Motors': 'https://www.carlogos.org/car-logos/lucid-logo.png',
+                'VinFast': 'https://www.carlogos.org/car-logos/vinfast-logo.png'
+            };
+            var logo = logos[marque.text];
+            if (!logo) return marque.text;
+            return $(
+                '<span><img src="' + logo + '" style="height:25px; margin-right:8px; vertical-align:middle; object-fit:contain;"/>' + marque.text + '</span>'
+            );
+        }
+
+        $(document).ready(function () {
+            $('#marque').select2({
+                templateResult: formatMarque,
+                templateSelection: formatMarque,
+                width: '100%'
+            });
+        });
+    </script>
 
 </body>
 

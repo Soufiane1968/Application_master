@@ -4,10 +4,10 @@ def connexion():
     conn = sqlite3.connect('sobemat.db', check_same_thread=False)
     return conn
 
-CONN = connexion()
-CURSOR = CONN.cursor()
 def creer_table():
-    CURSOR.execute('''
+    conn = connexion()
+    cursor = conn.cursor()
+    cursor.execute('''
         CREATE TABLE IF NOT EXISTS vehicules (
             id        INTEGER PRIMARY KEY AUTOINCREMENT,
             marque    TEXT NOT NULL,
@@ -18,15 +18,18 @@ def creer_table():
             couleur   TEXT,
             prix      REAL,
             etat      TEXT,
-            revision  TEXT,
             photos    TEXT,
             boite     TEXT,
             puissance TEXT,
-            equipements TEXT               
+            equipements  TEXT,
+            nb_portes    TEXT,
+            nb_places    TEXT               
         )
     ''')
-    CONN.commit()
+    conn.commit()
+    conn.close()
     print("✅ Base de données créée avec succès !")
+
 
 def ajouter_vehicule(marque, modele, annee, km, moteur, couleur, prix, etat, revision, boite, puissance,  equipements):
     conn = connexion()
