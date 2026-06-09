@@ -29,24 +29,23 @@ def ajouter():
 
     
     if request.method == 'POST':
-        marque   = request.form['marque']
-        modele   = request.form['modele']
-        annee    = request.form['annee']
-        km       = request.form['km']
-        moteur   = request.form['moteur']
-        couleur  = request.form['couleur']
-        prix     = request.form['prix']
-        etat     = request.form['etat']
-        revision = request.form['revision']
-        boite    = request.form['boite']
-        puissance    = request.form['puissance']
+        marque      = request.form['marque']
+        modele      = request.form['modele']
+        annee       = request.form['annee']
+        km          = request.form['km']
+        moteur      = request.form['moteur']
+        couleur     = request.form['couleur']
+        prix        = request.form['prix']
+        etat        = request.form['etat']
+        boite       = request.form['boite']
+        puissance   = request.form['puissance']
         equipements = request.form['equipements']
-
-
+        nb_portes   = request.form['nb_portes']
+        nb_places   = request.form['nb_places']
 
         # Ajouter dans la base de données
         vehicule_id = database.ajouter_vehicule(
-            marque, modele, annee, km, moteur, couleur, prix, etat, revision, boite, puissance, equipements
+            marque, modele, annee, km, moteur, couleur, prix, etat, boite, puissance, equipements, nb_portes, nb_places
         )
 
         # Générer le QR Code

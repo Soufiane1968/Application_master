@@ -31,14 +31,14 @@ def creer_table():
     print("✅ Base de données créée avec succès !")
 
 
-def ajouter_vehicule(marque, modele, annee, km, moteur, couleur, prix, etat, revision, boite, puissance,  equipements):
+def ajouter_vehicule(marque, modele, annee, km, moteur, couleur, prix, etat, boite, puissance, equipements, nb_portes, nb_places):
     conn = connexion()
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO vehicules 
-        (marque, modele, annee, km, moteur, couleur, prix, etat, revision, boite, puissance, equipements )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    ''', (marque, modele, annee, km, moteur, couleur, prix, etat, revision, boite, puissance, equipements ))
+        (marque, modele, annee, km, moteur, couleur, prix, etat, boite, puissance, equipements, nb_portes, nb_places)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ''', (marque, modele, annee, km, moteur, couleur, prix, etat, boite, puissance, equipements, nb_portes, nb_places))
     conn.commit()
     vehicule_id = cursor.lastrowid
     conn.close()
